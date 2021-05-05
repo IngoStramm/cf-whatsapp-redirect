@@ -4,7 +4,7 @@
  * Plugin Name: Converte Fácil: Whatsapp Redirect
  * Plugin URI: https://agencialaf.com
  * Description: Descrição do Converte Fácil: Whatsapp Redirect.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Ingo Stramm
  * Text Domain: cf-whatsapp-redirect
  * License: GPLv2
@@ -45,6 +45,8 @@ add_action('wp_footer', function () {
                         clearInterval(cwr_verifica_btn);
                         cwr_wpp_btns[0].addEventListener('click', (evt) => {
 
+                            cwr_wpp_btns[0].setAttribute('target', '_blank');
+
                             let validate_fields = true;
                             let cwr_fields_data_object = {};
                             cwr_fields_data_object.event = 'whatsapp';
@@ -55,13 +57,13 @@ add_action('wp_footer', function () {
                                 if (i === 2 && cwr_field.value.length <= 4 || cwr_field.parentNode.classList.contains('has-danger')) {
                                     validate_fields = false;
                                 }
-                                console.log(cwr_field);
+                                // console.log(cwr_field);
                                 const k = cwr_field.name;
                                 const v = cwr_field.value;
                                 cwr_fields_data_object[k] = v;
                             });
 
-                            console.log(cwr_fields_data_object);
+                            // console.log(cwr_fields_data_object);
 
                             if (validate_fields === true) {
                                 // debugger;

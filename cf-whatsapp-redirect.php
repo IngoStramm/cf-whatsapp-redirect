@@ -4,7 +4,7 @@
  * Plugin Name: Converte Fácil: Whatsapp Redirect
  * Plugin URI: https://agencialaf.com
  * Description: Descrição do Converte Fácil: Whatsapp Redirect.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Ingo Stramm
  * Text Domain: cf-whatsapp-redirect
  * License: GPLv2
@@ -29,6 +29,7 @@ function cwr_debug($debug)
 add_action('wp_footer', function () {
 ?>
     <script>
+        // Caso o botão do whatsapp tenha sido adicionado pelo RD Station
         window.onload = () => {
             let count = 1;
             let cwr_verifica_btn = setInterval(() => {
@@ -87,7 +88,34 @@ add_action('wp_footer', function () {
                     });
                 });
             });
-
+        };
+    </script>
+    <script>
+        // Caso haja botões inseridos através do Elementor (ou de outra forma)
+        // basta adicionar a classe "trigger-gtm-wpp" no botão/link
+        window.onload = () => {
+            const cwr_others_wpp_btns = document.getElementsByClassName('trigger-gtm-wpp');
+            Array.prototype.forEach.call(cwr_others_wpp_btns, (cwr_others_wpp_btn) => {
+                cwr_others_wpp_btn.addEventListener('click', () => {
+                    // debugger;
+                    dataLayer.push({
+                        'event': 'whatsapp'
+                    });
+                });
+            });
+        };
+    </script>
+    <script>
+        // Caso o botão do Whatsapp tenha sido adicionado pelo plugin Click to Chat (padrão nos CF)
+        window.onload = () => {
+            const ctc_wpp_divs = document.getElementsByClassName('ht-ctc-chat');
+            Array.prototype.forEach.call(ctc_wpp_divs, (ctc_wpp_div) => {
+                ctc_wpp_div.addEventListener('click', (evt) => {
+                    dataLayer.push({
+                        'event': 'whatsapp'
+                    });
+                });
+            });
         };
     </script>
 <?php

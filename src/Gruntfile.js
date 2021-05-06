@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                     '!../classes/**',
                     '!../dist/**',
                     '!../src/**',
-                    '!../tgm/**',
+                    '!../scripts.php',
                     '!../**.md',
                     '!../**.txt',
                     '!<%= dirs.sass %>/**',

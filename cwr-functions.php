@@ -163,21 +163,19 @@ add_action('wp_footer', function () {
     <?php
     $cwr_direct_css_classes = cwr_get_option('cwr_direct_css_classes');
     ?>
-        <script>
-            const cwr_direct_link_classes = () => {
-                <?php if (!empty($cwr_direct_css_classes) && !is_null($cwr_direct_css_classes)) { ?>
-                    return;
-                <?php } ?>
-                const cwr_direct_css_classes_array = [];
-                <?php foreach ($cwr_direct_css_classes as $cwr_css_class) { ?>
-                    cwr_direct_css_classes_array.push('<?php echo $cwr_css_class; ?>');
-                <?php } ?>
-                cwr_css_classes_evt(cwr_direct_css_classes_array);
-            };
-        </script>
-    <?php
-    }
-    ?>
+    <script>
+        const cwr_direct_link_classes = () => {
+            <?php if (empty($cwr_direct_css_classes) && is_null($cwr_direct_css_classes)) { ?>
+                return;
+            <?php } ?>
+            const cwr_direct_css_classes_array = [];
+            <?php foreach ($cwr_direct_css_classes as $cwr_css_class) { ?>
+                cwr_direct_css_classes_array.push('<?php echo $cwr_css_class; ?>');
+            <?php } ?>
+            cwr_css_classes_evt(cwr_direct_css_classes_array);
+        };
+    </script>
+
     <script>
         const cwr_parent_link_classes = () => {
             <?php

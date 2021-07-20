@@ -33,7 +33,7 @@ add_action('wp_footer', function () {
     // cwr_debug($cwr_event_name);
     ?>
     <script>
-        cwr_trigger_element_evt = (cwr_wpp_element) => {
+        const cwr_trigger_element_evt = (cwr_wpp_element) => {
             cwr_wpp_element.addEventListener('click', (evt) => {
                 // evt.preventDefault();
                 // console.log('click');
@@ -127,7 +127,7 @@ add_action('wp_footer', function () {
     </script>
     <script>
         // Caso o botão do Whatsapp tenha sido adicionado pelo plugin Click to Chat (padrão nos CF)
-        cwr_click_to_chat = () => {
+        const cwr_click_to_chat = () => {
             <?php
             $cwr_get_active_plugins = get_option('active_plugins');
             if (!in_array('click-to-chat-for-whatsapp/click-to-chat.php', $cwr_get_active_plugins)) { ?>
@@ -141,7 +141,7 @@ add_action('wp_footer', function () {
         };
     </script>
     <script>
-        cwr_css_classes_evt = (cwr_css_classes_array, parent = false) => {
+        const cwr_css_classes_evt = (cwr_css_classes_array, parent = false) => {
             if (cwr_css_classes_array.length > 0) {
                 for (let index = 0; index < cwr_css_classes_array.length; index++) {
                     const cwr_wpp_elements = document.getElementsByClassName(cwr_css_classes_array[index]);
@@ -165,7 +165,7 @@ add_action('wp_footer', function () {
     if (!empty($cwr_direct_css_classes) && !is_null($cwr_direct_css_classes)) {
     ?>
         <script>
-            cwr_direct_link_classes = () => {
+            const cwr_direct_link_classes = () => {
                 const cwr_direct_css_classes_array = [];
                 <?php foreach ($cwr_direct_css_classes as $cwr_css_class) { ?>
                     cwr_direct_css_classes_array.push('<?php echo $cwr_css_class; ?>');
@@ -177,7 +177,7 @@ add_action('wp_footer', function () {
     }
     ?>
     <script>
-        cwr_parent_link_classes = () => {
+        const cwr_parent_link_classes = () => {
             <?php
             $cwr_parent_css_classes = cwr_get_option('cwr_parent_css_classes');
             if (empty($cwr_parent_css_classes) || is_null($cwr_parent_css_classes)) { ?>

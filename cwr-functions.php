@@ -162,10 +162,12 @@ add_action('wp_footer', function () {
     </script>
     <?php
     $cwr_direct_css_classes = cwr_get_option('cwr_direct_css_classes');
-    if (!empty($cwr_direct_css_classes) && !is_null($cwr_direct_css_classes)) {
     ?>
         <script>
             const cwr_direct_link_classes = () => {
+                <?php if (!empty($cwr_direct_css_classes) && !is_null($cwr_direct_css_classes)) { ?>
+                    return;
+                <?php } ?>
                 const cwr_direct_css_classes_array = [];
                 <?php foreach ($cwr_direct_css_classes as $cwr_css_class) { ?>
                     cwr_direct_css_classes_array.push('<?php echo $cwr_css_class; ?>');

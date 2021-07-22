@@ -1,7 +1,7 @@
 {
     "name": "cf-whatsapp-redirect",
     "description": "Descrição do Converte Fácil: Whatsapp Redirect.",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "title": "Converte Fácil: Whatsapp Redirect",
     "homepage": "https://agencialaf.com",
     "main": "Gruntfile.js",

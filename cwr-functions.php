@@ -97,7 +97,7 @@ add_action('wp_footer', function () {
                                 if (typeof(dataLayer) != 'undefined' && dataLayer != null) {
                                     dataLayer['event'] = 'whatsapp';
                                     dataLayer.push(cwr_fields_data_object);
-                                    console.log('Disparou botão RD Station');
+                                    console.log('Disparou botão RD Station:', dataLayer);
                                 }
                             }
 
